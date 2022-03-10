@@ -5,6 +5,7 @@
       <ul>
         <li v-for="task in tasks" :key="task.id">
           {{ task.title }}
+          <button @click="removeTask(task)">X</button>
         </li>
       </ul>
     </div>
@@ -34,8 +35,11 @@ export default {
   methods: {
     addTask() {
       this.tasks.push({id: id++, title: this.newTask, done: false});
-      this.newTask = ''
+      this.newTask = '';
     },
+    removeTask(task) {
+        this.tasks = this.tasks.filter((t) => t !== task);
+    }
   },
 };
 </script>
