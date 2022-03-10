@@ -1,9 +1,10 @@
 <template>
   <div class="home">
     <div>
-      <h1>All task</h1>
+      <h1>All tasks</h1>
       <ul>
         <li v-for="task in tasks" :key="task.id">
+          <input type="checkbox" v-model="task.completed" />
           {{ task.title }}
           <button @click="removeTask(task)">X</button>
         </li>
@@ -11,7 +12,25 @@
     </div>
 
     <div>
-      <input type="text" v-model="newTask"/>
+      <h1>Completed Tasks</h1>
+      <ul>
+        <li v-for="task in completedTasks" :key="task.id">
+          {{ task.title }}
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <h1>Uncompleted Tasks</h1>
+      <ul>
+        <li v-for="task in uncompletedTasks" :key="task.id">
+          {{ task.title }}
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <input type="text" v-model="newTask" />
       <button @click="addTask">Add new task</button>
     </div>
   </div>
@@ -26,20 +45,28 @@ export default {
     return {
       newTask: "",
       tasks: [
-        { id: id++, title: "Learn Vue", done: true },
-        { id: id++, title: "Learn CSS", done: true },
-        { id: id++, title: "Learn HTML", done: true },
+        { id: id++, title: "Learn Vue", completed: true },
+        { id: id++, title: "Learn CSS", completed: true },
+        { id: id++, title: "Learn HTML", completed: false },
       ],
     };
   },
   methods: {
     addTask() {
-      this.tasks.push({id: id++, title: this.newTask, done: false});
-      this.newTask = '';
+      this.tasks.push({ id: id++, title: this.newTask, completed: false });
+      this.newTask = "";
     },
     removeTask(task) {
-        this.tasks = this.tasks.filter((t) => t !== task);
-    }
+      this.tasks = this.tasks.filter((t) => t !== task);
+    },
+  },
+  computed: {
+    completedTasks() {
+      return this.tasks.filter((task) => task.completed);
+    },
+    uncompletedTasks() {
+      return this.tasks.filter((task) => !task.completed);
+    },
   },
 };
 </script>
