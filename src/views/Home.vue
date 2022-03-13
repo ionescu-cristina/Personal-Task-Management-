@@ -1,32 +1,34 @@
 <template>
   <div class="home">
-    <div>
-      <h1>All tasks</h1>
-      <ul>
-        <li v-for="task in tasks" :key="task.id">
-          <input type="checkbox" v-model="task.completed" />
-          {{ task.title }}
-          <button @click="removeTask(task)">X</button>
-        </li>
-      </ul>
-    </div>
+    <div class="flex">
+      <div>
+        <h1>All tasks</h1>
+        <ul>
+          <li v-for="task in tasks" :key="task.id">
+            <input type="checkbox" v-model="task.completed" />
+            {{ task.title }}
+            <button @click="removeTask(task)">X</button>
+          </li>
+        </ul>
+      </div>
 
-    <div>
-      <h1>Completed Tasks</h1>
-      <ul>
-        <li v-for="task in completedTasks" :key="task.id">
-          {{ task.title }}
-        </li>
-      </ul>
-    </div>
+      <div>
+        <h1>Completed Tasks</h1>
+        <ul>
+          <li v-for="task in completedTasks" :key="task.id">
+            {{ task.title }}
+          </li>
+        </ul>
+      </div>
 
-    <div>
-      <h1>Uncompleted Tasks</h1>
-      <ul>
-        <li v-for="task in uncompletedTasks" :key="task.id">
-          {{ task.title }}
-        </li>
-      </ul>
+      <div>
+        <h1>Uncompleted Tasks</h1>
+        <ul>
+          <li v-for="task in uncompletedTasks" :key="task.id">
+            {{ task.title }}
+          </li>
+        </ul>
+      </div>
     </div>
 
     <div>
@@ -70,3 +72,20 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.flex {
+  display: flex;
+  justify-content: center;
+
+}
+.flex > div {
+  border: 1px solid 	#808080;
+  margin: 50px;
+  padding: 50px;
+}
+.flex > div ul {
+  text-align: justify;
+  
+}
+</style>
