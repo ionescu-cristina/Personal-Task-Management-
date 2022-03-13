@@ -15,6 +15,10 @@
   color: #2c3e50;
 }
 
+.container {
+  width: 900px;
+}
+
 #nav {
   padding: 30px;
 }
