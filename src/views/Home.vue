@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="flex">
-      <div>
+      <div class="border">
         <h1>All tasks</h1>
         <ul>
           <li v-for="task in tasks" :key="task.id">
@@ -12,7 +12,7 @@
         </ul>
       </div>
 
-      <div>
+      <div class="border">
         <h1>Completed Tasks</h1>
         <ul>
           <li v-for="task in completedTasks" :key="task.id">
@@ -21,7 +21,7 @@
         </ul>
       </div>
 
-      <div>
+      <div class="border">
         <h1>Uncompleted Tasks</h1>
         <ul>
           <li v-for="task in uncompletedTasks" :key="task.id">
@@ -80,12 +80,14 @@ export default {
 
 }
 .flex > div {
-  border: 1px solid 	#808080;
   margin: 50px;
   padding: 50px;
 }
 .flex > div ul {
   text-align: justify;
   
+}
+.border {
+    border: 1px solid 	#808080;
 }
 </style>
