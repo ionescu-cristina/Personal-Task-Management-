@@ -15,7 +15,7 @@
 <script>
 import Card from "../components/Card.vue";
 export default {
-  name: "About",
+  name: "Pages",
   components: {
     Card,
   },
